@@ -7,26 +7,25 @@ const infoTexts = {
   consultoria: "Advisory services for water sustainability projects for companies and communities."
 };
 
+// Detectar si es un dispositivo táctil
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
 // Selecciona todas las tarjetas
 const cards = document.querySelectorAll('.info-card');
 
-// Agrega eventos a cada tarjeta
 cards.forEach(card => {
   const type = card.getAttribute('data-type');
   const contentDiv = card.querySelector('.info-content');
 
   function showText() {
-    if (contentDiv.innerHTML.trim() === '') {
-      contentDiv.innerHTML = `<p>${infoTexts[type] || 'Information not available'}</p>`;
-    }
+    contentDiv.innerHTML = `<p>${infoTexts[type] || 'Information not available'}</p>`;
   }
 
   function hideText() {
     contentDiv.innerHTML = '';
   }
 
-  function toggleText(e) {
-    e.stopPropagation(); // Evita conflictos con otros clics
+  function toggleText() {
     if (contentDiv.innerHTML.trim() === '') {
       showText();
     } else {
@@ -34,12 +33,11 @@ cards.forEach(card => {
     }
   }
 
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
   if (isTouchDevice) {
-    // Usamos 'touchstart' para que responda al primer toque
-    card.addEventListener('touchstart', toggleText);
+    // En móviles: tocar para alternar
+    card.addEventListener('click', toggleText);
   } else {
+    // En escritorio: hover para mostrar y ocultar
     card.addEventListener('mouseenter', showText);
     card.addEventListener('mouseleave', hideText);
   }
