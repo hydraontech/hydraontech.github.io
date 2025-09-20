@@ -15,27 +15,32 @@ cards.forEach(card => {
   const type = card.getAttribute('data-type');
   const contentDiv = card.querySelector('.info-content');
 
-  card.addEventListener('mouseenter', () => {
-    // Agrega el texto si no está ya agregado
+  function showText() {
     if (contentDiv.innerHTML.trim() === '') {
       contentDiv.innerHTML = `<p>${infoTexts[type] || 'Information not available'}</p>`;
     }
-  });
+  }
 
-  card.addEventListener('mouseleave', () => {
-    // Si quieres que se borre el contenido al salir, descomenta la línea siguiente
-    // contentDiv.innerHTML = '';
-  });
-});
+  function hideText() {
+    contentDiv.innerHTML = '';
+  }
 
-// Código para menú hamburguesa responsive
-const menuToggle = document.querySelector('.menu-toggle');
-const botones = document.querySelector('.botones');
+  function toggleText(e) {
+    e.stopPropagation(); // Evita conflictos con otros clics
+    if (contentDiv.innerHTML.trim() === '') {
+      showText();
+    } else {
+      hideText();
+    }
+  }
 
-menuToggle.addEventListener('click', () => {
-  if (botones.style.display === 'flex') {
-    botones.style.display = 'none';
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (isTouchDevice) {
+    // Usamos 'touchstart' para que responda al primer toque
+    card.addEventListener('touchstart', toggleText);
   } else {
-    botones.style.display = 'flex';
+    card.addEventListener('mouseenter', showText);
+    card.addEventListener('mouseleave', hideText);
   }
 });
