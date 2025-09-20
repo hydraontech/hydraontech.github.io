@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Hydra</title>
+  <link rel="stylesheet" href="CSS/Hydra_Diseño.css" />
+  <style>
+    /* Contenedor del formulario */
+    .contact-container {
+      padding: 80px 20px;
+      max-width: 600px;
+      margin: auto;
+      color: white;
+    }
+    h2 {
+      color: #00b4d8;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    p.description {
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #ddd;
+    }
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    form input[type="email"],
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+    form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .btn {
+      background-color: #00b4d8;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0288a5;
+    }
+    .confirmation-message {
+      display: none;
+      text-align: center;
+      color: #90ee90;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      background: #110D1F;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo img {
+      height: 70px;
+      width: auto;
+    }
+    .botones {
+      display: flex;
+      gap: 15px;
+    }
+    .btn {
+      background-color: #110D1F;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #00b4d8;
+    }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      justify-content: space-between;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 768px) {
+      .botones {
+        position: fixed;
+        top: 70px;
+        right: 0;
+        background: #110D1F;
+        flex-direction: column;
+        width: 200px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        height: calc(100vh - 70px);
+        padding-top: 20px;
+      }
+      .botones.active {
+        transform: translateX(0);
+      }
+      .btn {
+        padding: 15px 20px;
+        border-bottom: 1px solid #00b4d8;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="2_Pagina_Principal.html">
+        <img src="CSS/Images/Hydra_Icono_Blanco.png" alt="Logo Hydra" />
+      </a>
+    </div>
+
+    <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="botones" id="menu">
+      <a href="2_Pagina_Principal.html#about" class="btn">About</a>
+      <a href="2_Pagina_Principal.html#services" class="btn">Services</a>
+    </div>
+  </nav>
+
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p class="description">
+      Fill out the form below and we’ll get back to you soon.
+    </p>
+
+    <form id="contactForm" action="https://formspree.io/f/xovngjzj" method="POST">
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <div id="confirmation" class="confirmation-message">
+      Thank you for your message! Redirecting...
+    </div>
+  </div>
+
+  <script>
+    // Hamburger toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+      menuToggle.setAttribute('aria-expanded', !expanded);
+    });
+
+    // Accessibility: toggle menu with keyboard
+    menuToggle.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuToggle.click();
+      }
+    });
+
+    // Form submit with fetch to Formspree
+    const form = document.getElementById('contactForm');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          confirmation.style.display = 'block';
+
+          setTimeout(() => {
+            window.location.href = '2_Pagina_Principal.html';
+          }, 3000);
+        } else {
+          alert('Oops! There was a problem submitting your form.');
+        }
+      }).catch(() => {
+        alert('Oops! There was a problem submitting your form.');
+      });
+    });
+  </script>
+</body>
+</html>

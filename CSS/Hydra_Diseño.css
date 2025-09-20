@@ -1,0 +1,257 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #110D1F;
+  color: white;
+}
+
+nav {
+  background: #110D1F;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+nav .logo img {
+  height: 70px;
+  width: auto;
+}
+
+.botones {
+  display: flex;
+  gap: 15px;
+}
+
+.botones_dos {
+  align-items: center;
+}
+
+.btn {
+  background-color: #110D1F;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #00b4d8;
+}
+
+.hero {
+  height: 100vh;
+  background: url('Images/Ban.jpg') no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+section h2 {
+  color: #00b4d8;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+section p {
+  color: white;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+/* About Section */
+.about-section {
+  background-color: #110D1F;
+  padding: 60px 20px;
+}
+
+/* Info cards gallery */
+/* Info cards gallery */
+.info-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  background-color: #0077b6;
+  padding: 30px 40px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+  transition: min-height 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* vertical center */
+  text-align: center;
+  min-height: 80px; /* altura inicial mínima */
+}
+
+.info-card:hover {
+  min-height: 150px; /* altura mínima al hacer hover */
+}
+
+.info-content {
+  opacity: 0;
+  max-height: 0;
+  color: white;
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: center;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  overflow: hidden;
+  padding-top: 15px; /* espacio arriba para separar del título */
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Si quieres un margen extra en el párrafo */
+.info-content p {
+  margin-top: 10px;
+}
+
+
+.info-card:hover .info-content {
+  opacity: 1;
+  max-height: 180px;
+}
+
+
+/* Hover effect to expand card */
+.info-content {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  flex-direction: column;
+  text-align: center;
+}
+
+
+.info-card:hover .info-content {
+  opacity: 1;
+  max-height: 300px;
+}
+
+/* Services gallery same style */
+.services-gallery .info-card {
+  cursor: default; /* disable pointer for services */
+}
+
+/* Footer */
+.footer {
+  background-color: #24262B;
+  color: #00c3ff;
+  padding: 20px 0 30px;
+  text-align: center;
+}
+
+.footer .social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.footer .social-links a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: rgba(36, 22, 22, 0.2);
+  text-align: center;
+  line-height: 35px;
+  border-radius: 50%;
+  color: white;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.footer .social-links a:hover {
+  background-color: #00c3ff;
+}
+
+.contact-info {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Responsive Menu */
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .botones {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #110D1F;
+    margin-top: 10px;
+  }
+  .botones a {
+    padding: 12px 20px;
+    border-top: 1px solid #00b4d8;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  nav {
+    flex-wrap: wrap;
+  }
+  nav .logo {
+    flex: 1;
+  }
+}

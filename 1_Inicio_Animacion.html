@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hydra - Cargando.</title>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #052659;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #logo {
+      width: 300px;
+      opacity: 0;
+      animation: zoomIn 5.5s ease-in-out forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="CSS/Images/Hydra_Transparente.png" alt="Logo de Hydra" id="logo">
+
+  <script>
+    // Redirigir después de 5 segundos
+    setTimeout(() => {
+      window.location.href = "2_Pagina_Principal.html"; // Asegúrate de que el archivo se llame así y esté en la misma carpeta
+    }, 5000);
+  </script>
+
+</body>
+</html>
