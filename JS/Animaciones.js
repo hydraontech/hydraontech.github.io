@@ -1,4 +1,3 @@
-// Diccionario de contenido según tipo
 const infoTexts = {
   mision: "Implement and develop systems that benefit vulnerable communities, promoting the responsible use of water and environmental conservation.",
   vision: "Be leaders in sustainable innovation, transforming rainwater into an efficient tool for human consumption and hydroponic agriculture.",
@@ -7,10 +6,8 @@ const infoTexts = {
   consultoria: "Advisory services for water sustainability projects for companies and communities."
 };
 
-// Detectar si es un dispositivo táctil
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-// Selecciona todas las tarjetas
 const cards = document.querySelectorAll('.info-card');
 
 cards.forEach(card => {
@@ -34,16 +31,13 @@ cards.forEach(card => {
   }
 
   if (isTouchDevice) {
-    // En móviles: tocar para alternar
     card.addEventListener('click', toggleText);
   } else {
-    // En escritorio: hover para mostrar y ocultar
     card.addEventListener('mouseenter', showText);
     card.addEventListener('mouseleave', hideText);
   }
 });
 
-// Código para el menú hamburguesa
 const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.getElementById('nav-menu');
 
