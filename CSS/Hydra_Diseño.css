@@ -93,6 +93,7 @@ section p {
   color: white;
   max-width: 700px;
   margin: 0 auto 40px auto;
+  text-align: center;
 }
 
 .about-section {
