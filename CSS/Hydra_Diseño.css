@@ -154,12 +154,10 @@ section p {
   margin-top: 10px;
 }
 
-
 .info-card:hover .info-content {
   opacity: 1;
   max-height: 180px;
 }
-
 
 .info-content {
   margin-top: 10px;
@@ -169,7 +167,6 @@ section p {
   flex-direction: column;
   text-align: center;
 }
-
 
 .info-card:hover .info-content {
   opacity: 1;
@@ -216,6 +213,7 @@ section p {
   margin-top: 10px;
   font-size: 0.95rem;
   color: #ccc;
+  text-align: center;
 }
 
 .menu-toggle {
@@ -233,16 +231,24 @@ section p {
     background-color: #110D1F;
     margin-top: 10px;
   }
+
+  .botones.open {
+    display: flex;
+  }
+
   .botones a {
     padding: 12px 20px;
     border-top: 1px solid #00b4d8;
   }
+
   .menu-toggle {
     display: block;
   }
+
   nav {
     flex-wrap: wrap;
   }
+
   nav .logo {
     flex: 1;
   }
