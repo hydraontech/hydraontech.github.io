@@ -160,7 +160,6 @@ section p {
 }
 
 
-/* Hover effect to expand card */
 .info-content {
   margin-top: 10px;
   display: flex;
@@ -176,12 +175,10 @@ section p {
   max-height: 300px;
 }
 
-/* Services gallery same style */
 .services-gallery .info-card {
-  cursor: default; /* disable pointer for services */
+  cursor: default;
 }
 
-/* Footer */
 .footer {
   background-color: #24262B;
   color: #00c3ff;
@@ -219,8 +216,6 @@ section p {
   font-size: 0.95rem;
   color: #ccc;
 }
-
-/* Responsive Menu */
 
 .menu-toggle {
   display: none;
